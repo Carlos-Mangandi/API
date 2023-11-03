@@ -35,7 +35,7 @@ RoleController.createRol = (req, resp) => __awaiter(void 0, void 0, void 0, func
 // => se llama función de flecha
 RoleController.getRoles = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const rol = yield roleRepository.findOne({ where: { state: true } });
+        const rol = yield roleRepository.find({ where: { state: true } });
         return rol.length > 0
             ? resp.json({ ok: true, rol }) : resp.json({ ok: false, msg: 'Not found' });
     }

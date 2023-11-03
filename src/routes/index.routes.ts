@@ -6,11 +6,12 @@ import { Rol } from '../models/Rol';
 
 dotenv.config()
 
-const URL = process.env.url // 
+const URL = process.env.url  
 
 const routes = Router()
 
 //rutas 
 routes.use(`${URL}/rol`, routerRol)
-routes.use(`${URL}/user`, routerUser)
+// routes.use(`${URL}/user`, routerUser)
+
 export default routes

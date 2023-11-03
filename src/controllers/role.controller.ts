@@ -29,7 +29,7 @@ class RoleController{
     static getRoles = async (req:Request, resp:Response)=>{
         
         try {
-            const rol = await roleRepository.findOne({ where : {state:true} })
+            const rol = await roleRepository.find({ where : {state:true} })
             return rol.length>0 
                 ?resp.json({ok:true, rol}) : resp.json({ok:false, msg:'Not found'})
         } catch (error) {
@@ -87,7 +87,7 @@ class RoleController{
 
     
     // get = solo se pueden mandar params y querys}
-    // un mtodo es un algoritmo
+    // un método es un algoritmo
     // filtro y código
 }
 

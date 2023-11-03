@@ -1,6 +1,7 @@
+import  cor  from 'cors';
 import morgan from "morgan"
-import express,{Application} from "express"
-import routes from '../routes/index.routes'
+import express,{Application} from "express";
+import routes from '../routes/index.routes';
 
 //como se va a crear a que puerto se va crear
 class Server{
@@ -16,6 +17,13 @@ class Server{
     }
     //lo que va a ocupar para poder correr
     middlewares(){
+        this.app.use(
+            cor({
+                origin:["http://localhost:5173", "http://localhost:5174"],
+                credentials:true
+            })
+        )
+            
         this.app.use (morgan('dev'))
         //la velocidad que va a correr
         this.app.use(express.json({limit:'50mb'}))
@@ -25,6 +33,7 @@ class Server{
         // importación de lo que hemos puesto en la indexRoutes de routes
         this.app.use('/', routes)
 }
+
 listen (){
     this.app.listen((this.port=process.env.PORT || Server.PORT),()=>{
         console.log(`Server is running import ${this.port}`)
@@ -34,3 +43,7 @@ listen (){
 
 }
 export default Server
+
+function cors(arg0: {}) {
+    throw new Error("Function not implemented.")
+}
